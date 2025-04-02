@@ -1,0 +1,16 @@
+{
+  "name": "push",
+  "version": "1.0.0",
+  "description": "交互式命令行工具",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@inquirer/prompts": "^7.4.0"
+  }
+}
