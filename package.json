@@ -13,7 +13,7 @@
     "start": "node index.js"
   },
   "bin": {
-    "express-server": "./index.js"
+    "express-server": "index.js"
   },
   "keywords": [
     "express",
