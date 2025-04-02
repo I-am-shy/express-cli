@@ -1,4 +1,6 @@
-# 打包一个交互式命令行工具包
+# 一个 express 项目的脚手架
+
+## 交互式命令行工具包
 
 安装 [inauier](https://inquirer.nodejs.cn/docs/) 包，用于创建交互式命令行工具
 ```bash
