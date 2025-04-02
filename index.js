@@ -9,7 +9,7 @@ import path from 'node:path'
 // console.log(process.cwd()) // 当前工作目录
 // console.log(import.meta.dirname) // 程序所在的目录
 
-if(!answer.project_name||!answer.project_name){
+if(!answer.project_name && !answer.project_name){
   console.error('缺少必要参数')
   process.exit()
 }
