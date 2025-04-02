@@ -9,9 +9,6 @@
   "scripts": {
     "start": "node --watch ./bin/www"
   },
-  "bin": {
-    "create": "bin/create.js"
-  },
   "keywords": [
     "express",
     "nodejs"

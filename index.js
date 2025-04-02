@@ -1,13 +1,16 @@
+#!/usr/bin/env node
+
 import answer from './input.js'
 import fs from 'node:fs'
 import path from 'node:path'
 
+// console.log(process.argv.slice(2)) // 获取命令行携带的参数
 // console.log(answer) // 用户输入的结果
 // console.log(process.cwd()) // 当前工作目录
 // console.log(import.meta.dirname) // 程序所在的目录
 
-if(!answer){
-  console.error('输入错误')
+if(!answer.project_name||!answer.project_name){
+  console.error('缺少必要参数')
   process.exit()
 }
 
@@ -27,7 +30,7 @@ fs.cp(templatePath, resultPath, {recursive: true},(err)=>{
     console.error(err)
     process.exit(1)
   }
-  console.log('项目创建成功\n')
+  console.log('\n\n项目创建成功')
   console.log(`cd ${answer.project_name}`)
   console.log('npm install')
   console.log('npm run start')

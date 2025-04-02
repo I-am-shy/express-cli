@@ -1,5 +1,9 @@
 import { input, select, confirm, checkbox, search, rawlist, editor, number, password, expand } from '@inquirer/prompts';
 
+// 获取命令行携带的参数
+const args = process.argv.slice(2)
+const project_name = args[0]
+
 const answer = {}
 const prompt = {
   project_name: {
@@ -18,9 +22,11 @@ const prompt = {
 }
 
 try {
-  if(prompt.project_name){
+  if(prompt.project_name && project_name !== ""){ // 有项目名称问题和执行命令没有携带项目名称是
     const inputAnswer = await input(prompt.project_name);
-    Object.assign(answer, {project_name:inputAnswer})
+    Object.assign(answer, {project_name:inputAnswer.trim()})
+  }else{
+    Object.assign(answer, {project_name:project_name.trim()})
   }
 
   if(prompt.project_type){
