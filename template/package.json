@@ -1,9 +1,7 @@
 {
-  "name": "push",
+  "name": "express-server",
   "version": "1.0.0",
-  "description": "交互式命令行工具",
-  "main": "index.js",
-  "type": "module",
+  "description": "A template that help you build fast and simple express server",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
@@ -21,6 +19,9 @@
   "author": "shyshi",
   "license": "MIT",
   "dependencies": {
-    "@inquirer/prompts": "^7.4.0"
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "morgan": "~1.9.1"
   }
 }

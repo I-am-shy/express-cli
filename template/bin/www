@@ -1,0 +1,92 @@
+#!/usr/bin/env node
+
+/**
+ * 模块依赖项。
+ */
+
+const app = require('../app');
+const debug = require('debug')('server:server');
+const http = require('http');
+
+/**
+ * 从环境中获取端口并存储在 Express 中，默认为 3000
+ */
+
+const port = normalizePort(process.env.PORT || '3000');
+app.set('port', port);
+
+/**
+ * 创建 HTTP 服务器。
+ */
+
+const server = http.createServer(app);
+
+/**
+ * 在提供的端口上侦听，在所有网络接口上。
+ */
+
+server.listen(port,()=>{
+  console.log(`Server is running on port ${port}\nhttp://127.0.0.1:${port}`);
+});
+server.on('error', onError);
+server.on('listening', onListening);
+
+/**
+ * 将端口规范化为数字、字符串或 false。
+ */
+
+function normalizePort(val) {
+  const port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}
+
+/**
+ * HTTP 服务器 “error” 事件的事件侦听器。
+ */
+
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+
+  const bind = typeof port === 'string'
+    ? 'Pipe ' + port
+    : 'Port ' + port;
+
+  // 使用友好消息处理特定的侦听错误
+  switch (error.code) {
+    case 'EACCES':
+      console.error(bind + ' requires elevated privileges');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error(bind + ' is already in use');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+
+/**
+ * HTTP 服务器 “侦听” 事件的事件侦听器。
+ */
+
+function onListening() {
+  const addr = server.address();
+  const bind = typeof addr === 'string'
+    ? 'pipe ' + addr
+    : 'port ' + addr.port;
+  debug('Listening on ' + bind);
+}
