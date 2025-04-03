@@ -1,6 +1,6 @@
 {
   "name": "@shyshi/express",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "交互式命令行工具,快速创建express项目",
   "main": "index.js",
   "private": false,
