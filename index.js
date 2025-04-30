@@ -14,8 +14,8 @@ if(!answer.project_name && !answer.project_name){
   process.exit()
 }
 
-// 根据是否启用git选择模板
-const templatePath = answer.isGit ? path.join(import.meta.dirname, 'template_git') : path.join(import.meta.dirname, 'template')
+// 区分 import.meta.dirname 程序所在的目录 和 process.cwd() 程序执行的目录
+const templatePath = answer.isGit ? path.join(import.meta.dirname, 'template_git') : path.join(import.meta.dirname, 'template') // 根据是否启用git选择模板
 const resultPath = path.join(process.cwd(), answer.project_name)
 
 // 如果目录存在，则退出
@@ -30,7 +30,7 @@ fs.cp(templatePath, resultPath, {recursive: true},(err)=>{
     console.error(err)
     process.exit(1)
   }
-  console.log('\n\n项目创建成功')
+  console.log('\n\n项目创建成功！')
   console.log(`cd ${answer.project_name}`)
   console.log('npm install')
   console.log('npm run start')

@@ -1,0 +1,7 @@
+# 忽略列表
+
+/node_modules
+.vscode
+.DS_Store
+.idea
+.env

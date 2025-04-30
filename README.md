@@ -18,6 +18,10 @@ npm install -g @shyshi/express
 执行命令
 ```bash
 express-server
+
+#或
+express-server project_name
+
 ```
 
 2. 通过 npx 直接使用
