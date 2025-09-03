@@ -8,12 +8,12 @@ let clients = [];
 // 模拟一个连续的耗时任务
 function task(num){
   return new Promise((resolve,reject)=>{
-    let timer = setTimeout(()=>{
-      num += Math.floor(Math.random()*10);
-      if(num >= 10){ 
-        clearTimeout(timer);
-        resolve("done")
+    setTimeout(()=>{
+      if(num >= 10){
+        resolve("done");
+        return;
       }
+      num += Math.floor(Math.random()*10);
       resolve(num);
     },1000);
   })
@@ -45,10 +45,10 @@ router.get('/', (req, res) => {
   setInterval(async()=>{
     const result = await task(0);
     if(result === "done"){ // 如果任务完成，则结束连接
-      res.end(`data: ${JSON.stringify({clientId: clientId, result: result })}\n\n`);
+      res.end();
     }
     res.write(`data: ${JSON.stringify({clientId: clientId, result: result })}\n\n`);
-  },1000)
+  },1500)
 
   // 客户端断开连接时清理
   req.on('close', () => {
@@ -57,8 +57,5 @@ router.get('/', (req, res) => {
   });
 });
 
-router.listen(9527, () => {
-    console.log('Server is running on port 9527, http://localhost:9527');
-});
 
 module.exports = router;
