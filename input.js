@@ -22,7 +22,7 @@ const prompt = {
 }
 
 try {
-  if(prompt.project_name && project_name !== ""){ // 有项目名称问题和执行命令没有携带项目名称是
+  if(prompt.project_name && !project_name){ // 有项目名称问题和执行命令没有携带项目名称
     const inputAnswer = await input(prompt.project_name);
     Object.assign(answer, {project_name:inputAnswer.trim()})
   }else{
