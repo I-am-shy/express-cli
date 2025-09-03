@@ -6,6 +6,8 @@ const cors = require('cors');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const longPollingRouter = require('./routes/long-polling');
+const sseRouter = require('./routes/sse');
 
 const app = express();
 
@@ -26,8 +28,10 @@ app.use("/public",express.static(path.join(__dirname, 'public'),{
 }));// 静态文件服务,
 
 
-// 路由
+// 路由 ，按照路由定义的顺序（挂载顺序）进行匹配，即 “先到先得”
 app.use('/', indexRouter); 
 app.use('/users', usersRouter);
+app.use('/long-polling', longPollingRouter);
+app.use('/sse', sseRouter);
 
 module.exports = app;

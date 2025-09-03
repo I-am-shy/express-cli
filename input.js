@@ -15,10 +15,10 @@ const prompt = {
   //   choices: ['Javascript','Typescript' ],
   //   default: 'Javascript'
   // },
-  isGit: {
-    message: '是否启用git进行版本管理',
-    default: true
-  }
+  // isGit: {
+  //   message: '是否启用git进行版本管理',
+  //   default: true
+  // }
 }
 
 try {

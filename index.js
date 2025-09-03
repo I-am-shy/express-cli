@@ -15,7 +15,8 @@ if(!answer.project_name && !answer.project_name){
 }
 
 // 区分 import.meta.dirname 程序所在的目录 和 process.cwd() 程序执行的目录
-const templatePath = answer.isGit ? path.join(import.meta.dirname, 'template_git') : path.join(import.meta.dirname, 'template') // 根据是否启用git选择模板
+
+const templatePath = path.join(import.meta.dirname, 'template') 
 const resultPath = path.join(process.cwd(), answer.project_name)
 
 // 如果目录存在，则退出
